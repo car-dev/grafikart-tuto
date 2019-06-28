@@ -1,0 +1,89 @@
+<!-- https://www.grafikart.fr/tutoriels/decouverte-809 -->
+
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <title>Grafikart tuto VueJs</title>
+    <link rel="stylesheet" href="style/style.css">
+    <!-- Bootstrap :  Latest compiled and minified CSS -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+    <!-- Bootstrap :  Optional theme -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap-theme.min.css" integrity="sha384-rHyoN1iRsVXV4nD0JutlnGaslCJuC7uwjduW9SVrLvRYooPp2bWYgmgJQIXwl/Sp" crossorigin="anonymous">
+</head>
+<body>
+
+    <!-- Menu -->
+    <div class="ui navbar navbar-inverse fixed menu" id="menu">
+        <div class="container-fluid">
+            <div class="navbar-header">
+                <h3 class="item nav navbar-brand">{{ chapter }}</h3>
+            </div>
+        </div>
+    </div>
+
+
+    <!-- Contenu -->
+    <div class="ui main container" id="app">
+
+        <!-- <input type="text"  v-model="message"> -->
+        <p><input type="text" 
+            :value="message"
+            :class="message == 'Salut' ? 'success' : 'error'"
+            :style="{background: '#FF6777'}"></p> 
+        <div class="ui alert message" 
+            :class="success ? 'alert-success' : 'alert-danger'"
+            :style="customstyle">{{ message }}</div>
+        <div class="ui alert message"
+            :class="{'alert-success': success, 'alert-danger': !success}">{{ message }}</div>
+        
+        <!-- <input type="text" v-model="message"> -->
+        <p><input type="checkbox"
+            :value="success">success</p> 
+        <p><input type="checkbox"
+            v-model="message"
+            :true-value="'font-weight-bold'"
+            :false-value="'font-weight-light'"
+            :class="message">{{ message }}</p> 
+
+        <!-- <a v-bind:href="link + '/tutoriels'" target="_blank">{{ message }}</a> -->
+        <p><a :href="link" target="_blank" 
+            :title="message"
+            :style="otherstyle()">{{ message }}</a></p> 
+   
+        
+        <!-- if else -->
+        <div class="ui alert alert-success message"
+            v-if="success">
+            <!-- <button type="button" class="close" aria-label="Close" v-on:click="close"> -->
+            <button type="button" class="close" aria-label="Close" 
+                @click="close">
+                <span aria-hidden="true">&times;</span>
+            </button>
+            <!-- <i class="close icon"></i> -->
+            <p>Vous êtes successful !</p>
+        </div>
+        <div class="ui alert alert-warning message" 
+            v-else>
+            <p>Vous êtes successful quand même !</p>
+        </div>
+ 
+        <!-- foreach -->
+        <div class="ui">
+            <ul>
+                <li v-for="person in persons">{{ person }}</li>
+            </ul>
+        </div>
+
+    </div>
+
+
+    <!-- SCRIPTS -->
+    <!-- Bootstrap : Latest compiled and minified JavaScript -->
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/vue/2.6.10/vue.js"></script>
+    <!-- <script src="https://cdnjs.cloudflare.com/ajax/libs/vue/2.6.10/vue.common.dev.js"></script> -->
+    <script src="js/app_chapitre_02_base_interaction_app_html.js"></script>
+  
+</body>
+</html>
